@@ -1,3 +1,5 @@
 # Predicting-Minutes-Taken-for-Different-Recipes
 
-## By Bryan Cha, Chloe Kim
+by Bryan Cha & Chloe Kim
+
+Our exploratory data analysis on this dataset can be found [here] (https://sek034.github.io/Impact-of-Number-of-Nutritions/). 
