@@ -14,7 +14,7 @@ Our exploratory data analysis on this dataset can be found [here](https://sek034
 ---
 To improve the final model, we incorporated two new features: **text length** feature and **TF-IDF** analysis feature. 
 
-### Feature Engineering: 
+**Feature Engineering**: 
 Our final model incorporated two new features. 
 
 - First of all, we created a `steps_length` column by calculating the length of the text in the `steps` column, which can be a proxy for recipe complexity. We assumed that the longer texts describing the steps required for a reicipe, the more detailed or complex preparation processes it may indicate, potentially leading to longer cooking times. 
@@ -27,7 +27,7 @@ We used a more sophisticated model for this final model by incorporating **Rando
 
 **Hyperparameters Used**: 
 
-Similar to our baseline model, we used `GridSearchCV` to determine which combination of hyperparameters to use, which included *max_depth*, *criterion*, and *min_samples_split*. Based on our `GridSearchCV` result, we decided to use  
+Similar to our baseline model, we used `GridSearchCV` to determine which combination of hyperparameters to use, which included *max_depth*, *max_features*, and *n_estimators*. Based on our `GridSearchCV` result, we decided to use  
 
 **Performance on the Model**: 
 
