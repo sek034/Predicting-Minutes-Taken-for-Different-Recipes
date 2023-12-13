@@ -20,7 +20,9 @@ To improve the final model, we incorporated two new features: **text length** fe
 
 - Secondly, we used TF-IDF Vectorization on the `ingredients` column to transform the textual ingredient data into a structured format. This method will help in quantifying the uniqueness and importance of each ingredient in the context of the entire dataset. Ingredients that are unique or less common might be associated with more complex recipes, thus longer cooking times.
 
-**Model Buildiing**: We used a more sophisticated model for this final model by incorporating **RandomForestRegressor** to capture more complex relationships in the data than a simple DecisionTreeRegressor. 
+**Model Buildiing**: 
+We used a more sophisticated model for this final model by incorporating **RandomForestRegressor** to capture more complex relationships in the data than a simple DecisionTreeRegressor. On top of the `'log_transform'` and `'normalize'` features from baseline model, we also normalized `'steps_length'` column by *MinMaxScalar()* and created tfidf features for `ingredients` column. 
+ 
 
 ## Fairness Analysis
 ---
