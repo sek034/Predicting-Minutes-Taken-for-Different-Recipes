@@ -23,7 +23,12 @@ To improve the final model, we incorporated two new features: **text length** fe
 **Model Buildiing**: 
 
 We used a more sophisticated model for this final model by incorporating **RandomForestRegressor** to capture more complex relationships in the data than a simple DecisionTreeRegressor. On top of the `'log_transform'` and `'normalize'` features from baseline model, we also normalized `'steps_length'` column by *MinMaxScalar()* and created tfidf features for `ingredients` column. 
- 
+
+**Hyperparameters Used**: 
+
+Similar to our baseline model, we used `GridSearchCV` to determine which combination of hyperparameters to use, which included *max_depth*, *criterion*, and *min_samples_split*. Based on our `GridSearchCV` result, we decided to use  
+
+**Performance on the Model**: 
 
 ## Fairness Analysis
 ---
