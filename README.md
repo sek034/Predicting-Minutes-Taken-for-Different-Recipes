@@ -35,7 +35,7 @@ Similar to our baseline model, we used `GridSearchCV` to determine which combina
 ---
 ## Fairness Analysis
 ---
-For our fairness analysis, we asked the question, **"does our final model perform better for recipes that take longer than an hour than it does for recipes that take 60 minutes or less?"** To test this, we ran a permutation test by shuffling the minutes of **Group X** where recipes take *longer than 60 minutes* to make and **Group Y** where recipes take *60 minutes or less*. 
+For our fairness analysis, we asked the question, **"does our final model perform better for recipes that take longer than an hour than it does for recipes that take 50 minutes or less?"** To test this, we ran a permutation test by shuffling the minutes of **Group X** where recipes take *longer than 50 minutes* to make and **Group Y** where recipes take *50 minutes or less*. 
 
 We chose **RMSE** as our evaluation metric as it provides a somewhat clear measure of the average error in our predictions with a regression model. 
 
@@ -50,6 +50,6 @@ We chose **RMSE** as our evaluation metric as it provides a somewhat clear measu
 To perform the permutation test, we calculated the inital RMSE for each group using the actual data. We then shuffled the `minutes` values between two groups, and the RMSEs are recalculated for these permuted groups. 
 
 **Permutation Testing Result**:
-Our permutation test resulted in a p-value of **0.0**, which is *less* than our significance level, 0.05. Therefore, we have a strong evidence to ***reject*** the null hypothesis. This ***suggests*** that the model's performance is not the same across the two groups: recipes that take longer than an hour and those that take 60 minutes or less. 
+Our permutation test resulted in a p-value of **0.071**, which is *greater* than our significance level, 0.05. Therefore, we have a strong evidence to ***fail to reject*** the null hypothesis. This ***suggests*** that the model's performance is the same across the two groups: recipes that take longer than an hour and those that take 50 minutes or less. 
 
-However, we can not be completely certain when drawing conclusions, therefore these findings merely indicate that our model is **()**; they do not represent a firm conclusion for entire unseen data. 
+However, we can not be completely certain when drawing conclusions, therefore these findings merely indicate that our model is **reasonably fair based on the specific criteria and groups tested**; they do not represent a firm conclusion for entire unseen data. 
