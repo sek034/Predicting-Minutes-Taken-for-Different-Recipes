@@ -44,7 +44,7 @@ We chose **RMSE** as our evaluation metric as it provides a somewhat clear measu
 - **Alternative Hypothesis**: The model's performance, as measured by RMSE, *differs* between Group X and Group Y. 
 
 - **Test Statistic**: We used the *absolute difference in RMSE* between Group X and Group Y.
-- 
+  
 - **Significance Level**: 0.05
 
 However, we can not be completely certain when drawing conclusions, therefore these findings merely indicate that our model is **()**; they do not represent a firm conclusion for entire unseen data. 
