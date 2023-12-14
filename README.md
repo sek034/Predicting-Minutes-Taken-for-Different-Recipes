@@ -47,4 +47,9 @@ We chose **RMSE** as our evaluation metric as it provides a somewhat clear measu
   
 - **Significance Level**: 0.05
 
+To perform the permutation test, we calculated the inital RMSE for each group using the actual data. We then shuffled the `minutes` values between two groups, and the RMSEs are recalculated for these permuted groups. 
+
+**Permutation Testing Result**:
+Our permutation test resulted in a p-value of **0.0**, which is *less* than our significance level, 0.05. Therefore, we have a strong evidence to ***reject*** the null hypothesis. This ***suggests*** that the model's performance is not the same across the two groups: recipes that take longer than an hour and those that take 60 minutes or less. 
+
 However, we can not be completely certain when drawing conclusions, therefore these findings merely indicate that our model is **()**; they do not represent a firm conclusion for entire unseen data. 
