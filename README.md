@@ -53,8 +53,6 @@ This results in the following DataFrame: <br>
 
 
 
-</br>
-
 
 __Dependent Variable__: I chose **minutes** as the dependent variable because it is a <u>quantitative continuous</u> variable, which makes it a good target for regression. While the data seemingly only provides integers values for minutes, time is ultimately a continuous variable, which makes it more feasible to predict if converted to a floating value. In a real-world context, restaurants can use this predictive model to plan out feasible menus and individuals will be able to estimate and manage their time in the kitchen, making this predictive analysis useful in time management situations, or even for food and beverage businesses where menu planning might be required.
 
@@ -113,10 +111,11 @@ This visualization shows how doing a filtering of the dataset based on the <u>In
 
 For final model, we added two more different variables, which are *calories and tfidf of steps* in order to get a better prediction with training and testing the data.
 
-***Description***
+***Description***:
+
 the final model that we came up with includes 2 additional numeric features, which are *calories and tfidf of steps*. As tfidfi of steps has max features of 100, so these two different features should be more than enough to accruately train and test the data for prediction. We predicted that there are correlation between *minutes* with two additional variables. If the recipe is a high calories food, it tends to take more time as it contains more ingredients to be high calories food. Furthermore, high calories ingredients tend to take more time to cook in general. Also, important words in steps of recipe could affect the minutes to cook. For example, word like *oven* indicates that the cooking time will be longer than others. On the otherhands, word like "microwave* indicates that the cooking time tends to be shorter than others. For the features of final models, they are *n_step, n_ingredients, calories, and tfidf of steps*. 
 
-***New Features***
+***New Features***:
 
 **Calories**
 We used *FunctionTransformer* to *squareroot* the calories to make it has more normal distribution. We used squareroot instead of log transformation as calories include zero values. We also used *MinMaxScaler* to normalize values between 0 and 1. 
@@ -125,13 +124,15 @@ We used *FunctionTransformer* to *squareroot* the calories to make it has more n
 In order to reduce the complexity, we limited the number of word features that we wanted to consider to 100.
 We also used tfidf to find assign the importance of each words that was used in steps and see how it affects the minutes. In order to compute tfidf of each word, we also used vectorizers to split each word and also get tfidf. 
 
-***Algorithm Chosen***
+***Algorithm Chosen***:
+
 We used *random forest regressor* as it's not sensitive to outliers and robust to overfitting. Also, it can model non-linear relationship. Furthermore, we don't have to tune many hyperparameters. Since random forest is for train each decision tree in parallel, it is more efficient to our dataset. 
 
 We also used *GridSearchCV* in order to find the optimal numbers for our hyperparameter, which includes *clf__n_estimators*, *model__max_depth'* and *model__min_samples_split* to find the best combination that genearlize the best unseen data. I started running numbers in each parameters with big gaps, and I closed down the gaps as I repeatedly run the GridSearchCV. Therefore, I got 
 *n_estimators= 100, max_depth=6, min_samples_split=30*. I had to comment the GridSearchCV and put down the results to *RandomForestRegressor* in the pipeline directly as running GridSearchCV and fitting takes too much of a time.
 
-***Performance***
+***Performance***:
+
 We can clearly see the improvement compared to the baseline performace. We got around 90.8 for MAE of train performace for final model, and we got 134.4 MAE for train performace for base model. Furthermore, Test Performance's MAE for final model decreased about 20 compared to base model's. Also, Normalized Root Mean Squared Error decrease for Final model for both Train Performance and Test Performance. Therefore, we can state that final model generalize better on unseen data for prediction minutes of each recipe.
 
 
@@ -145,26 +146,6 @@ __Model Performance__:
 As you can see from the table above, our metrics are improved as compared to the baseline model. The MAE for both our train and test performance are imporved from our baseline. Since MAE is a metric whereby errors are treated equally, it is fair to say that the addition of text and numeric features to our baseline further improved the performance of the model in predicting the minutes of the recipe. In the caseof our RMSE metric, we can see that while there is little change, the model seems to have fitted better as opposed to our baseline model, with the difference between training and testing performance being closer to each other. Again, since the RMSE is a metric that is sensitive to outliers, the train and test RMSE being close to each other seems to be a indicator of a better fit.
 
 
-
----
-To improve the final model, we incorporated two new features: **text length** feature and **TF-IDF** analysis feature. 
-
-**Feature Engineering**: 
-Our final model incorporated two new features. 
-
-- First of all, we created a `steps_length` column by calculating the length of the text in the `steps` column, which can be a proxy for recipe complexity. We assumed that the longer texts describing the steps required for a reicipe, the more detailed or complex preparation processes it may indicate, potentially leading to longer cooking times. 
-
-- Secondly, we used TF-IDF Vectorization on the `ingredients` column to transform the textual ingredient data into a structured format. This method will help in quantifying the uniqueness and importance of each ingredient in the context of the entire dataset. Ingredients that are unique or less common might be associated with more complex recipes, thus longer cooking times.
-
-**Model Buildiing**: 
-
-We used a more sophisticated model for this final model by incorporating **RandomForestRegressor** to capture more complex relationships in the data than a simple DecisionTreeRegressor. On top of the `'log_transform'` and `'normalize'` features from baseline model, we also normalized `'steps_length'` column by *MinMaxScalar()* and created tfidf features for `ingredients` column. 
-
-**Hyperparameters Used**: 
-
-Similar to our baseline model, we used `GridSearchCV` to determine which combination of hyperparameters to use, which included *max_depth*, *max_features*, and *n_estimators*. Based on our `GridSearchCV` result, we decided to use  
-
-**Performance on the Model**: 
 
 ---
 ## Fairness Analysis
