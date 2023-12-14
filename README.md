@@ -32,4 +32,16 @@ Similar to our baseline model, we used `GridSearchCV` to determine which combina
 **Performance on the Model**: 
 
 ## Fairness Analysis
+
+For our fairness analysis, we asked the question, **"does our final model perform better for recipes that take longer than an hour than it does for recipes that take 60 minutes or less?"** To test this, we ran a permutation test by shuffling the minutes of **Group X** where recipes take *longer than 60 minutes* to make and **Group Y** where recipes take *60 minutes or less*. 
+
+We chose **RMSE** as our evaluation metric as it provides a somewhat clear measure of the average error in our predictions with a regression model. 
+
+- **Null Hypothesis**: The model's performance, as measured by *RMSE*, is the **same** for both Group X and Group Y. Any observed differences in RMSE between the two groups are due to random chance.
+
+- **Alternative Hypothesis**: The model's performance, as measured by *RMSE*, **differs** between Group X and Group Y. 
+
+- **Test Statistic**: We used the difference in RMSE between Group X and Group Y.
+
+- **Significance Level**: 0.05
 ---
