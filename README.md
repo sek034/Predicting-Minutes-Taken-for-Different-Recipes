@@ -10,6 +10,7 @@ Our exploratory data analysis on this dataset can be found [here](https://sek034
 ## Baseline Model
 ---
 
+---
 ## Final Model
 ---
 To improve the final model, we incorporated two new features: **text length** feature and **TF-IDF** analysis feature. 
@@ -31,8 +32,9 @@ Similar to our baseline model, we used `GridSearchCV` to determine which combina
 
 **Performance on the Model**: 
 
+---
 ## Fairness Analysis
-
+---
 For our fairness analysis, we asked the question, **"does our final model perform better for recipes that take longer than an hour than it does for recipes that take 60 minutes or less?"** To test this, we ran a permutation test by shuffling the minutes of **Group X** where recipes take *longer than 60 minutes* to make and **Group Y** where recipes take *60 minutes or less*. 
 
 We chose **RMSE** as our evaluation metric as it provides a somewhat clear measure of the average error in our predictions with a regression model. 
@@ -44,4 +46,5 @@ We chose **RMSE** as our evaluation metric as it provides a somewhat clear measu
 - **Test Statistic**: We used the *absolute difference in RMSE* between Group X and Group Y.
 
 - **Significance Level**: 0.05
----
+
+However, we can not be completely certain when drawing conclusions, therefore these findings merely indicate that our model is **()**; they do not represent a firm conclusion for entire unseen data. 
