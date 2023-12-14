@@ -104,7 +104,7 @@ These are visualization of our different numeric features before and after condu
 This visualization shows how doing a filtering of the dataset based on the <u>Interquartile Range</u> helps in stabilizing the distribution of the **calories** feature. Looking at the boxplot before filtering, we can see that the plot is basically dotted with several outliers of > 10000 calories. This severely skews the distribution of the calories and might also affect our prediction despite any transformations. The boxplot to the right shows the distribution of calories after conducting the filtering, and we can see that the lower end of the data (~200 to 500 calories) is now better represented and will not be undermined by large outliers. 
 
 
-
+<iframe src="graphs/fig2.html" width=800 height=600 frameBorder=0></iframe>
 
 
 ---
