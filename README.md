@@ -55,4 +55,6 @@ Our permutation test resulted in a p-value of **0.071**, which is *greater* than
 
 The histogram below offers a visualization of the RMSE differences obtained during the permutation iterations. The red vertical line indicates the *observed* RMSE difference. 
 
+<iframe src="fig_perm.html" width=800 height=600 frameBorder=0></iframe>
+
 However, we can not be completely certain when drawing conclusions, therefore these findings merely indicate that our model is **reasonably fair based on the specific criteria and groups tested**; they do not represent a firm conclusion for entire unseen data. 
