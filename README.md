@@ -136,7 +136,7 @@ We also used *GridSearchCV* in order to find the optimal numbers for our hyperpa
 We can clearly see the improvement compared to the baseline performace. We got around 90.8 for MAE of train performace for final model, and we got 134.4 MAE for train performace for base model. Furthermore, Test Performance's MAE for final model decreased about 20 compared to base model's. Also, Normalized Root Mean Squared Error decrease for Final model for both Train Performance and Test Performance. Therefore, we can state that final model generalize better on unseen data for prediction minutes of each recipe.
 
 
-__Model Performance__:
+***Model Performance***:
 
 |Metric                                     |Train Performance      |Test Performance   |
 |-------------------------------------------|-----------------------|-------------------|
@@ -144,7 +144,7 @@ __Model Performance__:
 |Root Mean Squared Error (RMSE)             |2101.283982867101      |2900.2191665008613 |
 |Normalized Root Mean Squared Error (n-RMSE)|0.0019989383398659635  |0.01007024040535162|
 
-As you can see from the table above, our metrics are improved as compared to the baseline model. The MAE for both our train and test performance are imporved from our baseline. Since MAE is a metric whereby errors are treated equally, it is fair to say that the addition of text and numeric features to our baseline further improved the performance of the model in predicting the minutes of the recipe. In the caseof our RMSE metric, we can see that while there is little change, the model seems to have fitted better as opposed to our baseline model, with the difference between training and testing performance being closer to each other. Again, since the RMSE is a metric that is sensitive to outliers, the train and test RMSE being close to each other seems to be a indicator of a better fit.
+As you can see from the table above, our metrics are *improved* as compared to the baseline model. The MAE for both our train and test performance are imporved from our baseline. Since MAE is a metric whereby errors are treated equally, it is fair to say that the addition of text and numeric features to our baseline further improved the performance of the model in predicting the minutes of the recipe. In the caseof our RMSE metric, we can see that while there is little change, the model seems to have fitted better as opposed to our baseline model, with the difference between training and testing performance being closer to each other. Again, since the RMSE is a metric that is sensitive to outliers, the train and test RMSE being close to each other seems to be a indicator of a better fit.
 
 
 
