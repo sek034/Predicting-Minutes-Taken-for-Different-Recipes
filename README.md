@@ -137,6 +137,7 @@ We can clearly see the improvement compared to the baseline performace. We got a
 
 
 __Model Performance__:
+
 |Metric                                     |Train Performance      |Test Performance   |
 |-------------------------------------------|-----------------------|-------------------|
 |Mean Absolute Error (MAE)                  |90.87995849444408      |115.9155515445313  |
