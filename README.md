@@ -13,7 +13,7 @@ Our exploratory data analysis on this dataset can be found [here](https://sek034
 Since we are predicting minutes based on the different recipes, there was no need to merge the <u>recipes.csv</u> data with <u>interactions.csv</u> data, since
 that would just give us duplicate rows of the exact same recipe. <br>
 
-Data Cleaning Steps: </br>
+Data Cleaning Steps: 
 - Sliced out only the data that is intuitive and relevant to our predictive analysis <br>
 - While each element in the **minutes** column in <u>recipes.csv</u> is an integer, time in general
 is a continuous variable; therefore, we converted it to type ```np.float64``` to better aid my prediction 
