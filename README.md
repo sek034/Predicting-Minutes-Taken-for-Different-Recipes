@@ -48,7 +48,7 @@ This results in the following DataFrame: <br>
 |  3 | millionaire pound cake               |         7 | freheat the oven to 300 degrees grease a 10-inch tube pan with butter dust the bottom and sides with flour and set aside in a large mixing bowl cream the butter and sugar with an electric mixer and add the eggs one at a time beating after each addition alternately add the flour and milk stirring till the batter is smooth add the two extracts and stir till well blended scrape the batter into the prepared pan and bake till a cake tester or knife blade inserted in the center comes out clean about 1 1 2 hours cool the cake in the pan on a rack for 5 minutes then turn it out on the rack to cool completely                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |               7 | butter sugar eggs all-purpose flour whole milk pure vanilla extract almond extract                                                                                                              |       120 |      878.3 |
 |  4 | 2000 meatloaf                        |        17 | pan fry bacon and set aside on a paper towel to absorb excess grease mince yellow onion red bell pepper and add to your mixing bowl chop garlic and set aside put 1tbsp olive oil into a saut pan along with chopped garlic teaspoons white pepper and a pinch of kosher salt bring to a medium heat to sweat your garlic preheat oven to 350f coarsely chop your baby spinach add to your heated pan stir frequently for approximately 5 min to wilt add your spinach to the mixing bowl chop your now cooled bacon and add it to the mixing bowl add your meatloaf mix to the bowl with one egg and mix till thoroughly combined add your goat cheese one egg 1 8 tsp white pepper and 1 8 tsp of kosher salt and mix till thoroughly combined transfer to a 9x5 meatloaf pan and cook for 60 min or until the internal temperature is at least 160f let stand for 5min melt 1tbsp unsalted butter into a frying pan and cook up to three eggs at a time crack each egg into a separate dish in order to prevent egg shells from reaching the pan then add salt and pepper to taste wait until the egg whites are firm looking but slightly runny on top before flipping your eggs after flipping wait 10~20 seconds before removing each egg and placing it over your slices of meatloaf |              13 | meatloaf mixture unsmoked bacon goat cheese unsalted butter eggs baby spinach yellow onion red bell pepper simply potatoes shredded hash browns fresh garlic kosher salt white pepper olive oil |        90 |      267   |
 
-<br>
+</br>
 
 
 __Dependent Variable__: I chose **minutes** as the dependent variable because it is a <u>quantitative continuous</u> variable, which makes it a good target for regression. While the data seemingly only provides integers values for minutes, time is ultimately a continuous variable, which makes it more feasible to predict if converted to a floating value. In a real-world context, restaurants can use this predictive model to plan out feasible menus and individuals will be able to estimate and manage their time in the kitchen, making this predictive analysis useful in time management situations, or even for food and beverage businesses where menu planning might be required.
@@ -63,7 +63,35 @@ __Known Information at Time of Prediction__: For predicting calories, the **n_st
 ---
 
 ## Baseline Model
+
 ---
+__Description__: As mentioned, I will be using **n_ingredients** and **n_steps** from the original dataset as initial features for my baseline model. While there are no categorical features so feature encoding will not be necessary here, there is no upper bound for the number of ingredients and number of steps since they are both <i>ordinal discrete</i> variables so some transformation might be required.
+
+
+
+__Feature Transformations__: First step of transformation was transforming the columns in a dataset with using *ColumnTransformer* with *FunctionTransformer(np.log)*and *MinMaxScaler()*.
+We transform data in *n_steps* and *n_ingredients* into log of its data in order to make them to resemble to normal distribution. Then, we normalized the values in two columns with using *MinMaxScaler()* so that they can have the same scale for better prediction. 
+
+
+
+__Hyperparameters Used__: 
+We used *GridSearchCV* to predict the ideal hyperparamters for criterion, max_depth of tree, and min_samples_plits.
+Initially we used hyperparatmers with broad range *(ex.clf__max_depth' : [1, 30, 50, 100, 200])*, and we minimized the range by running the GridSearch for several times. After Several times, we got to conclusion with ```{'clf__max_depth': 2, 'clf__min_samples_split': 15, 'clf__n_estimators': 500}```
+
+
+After the *GridSearchCV*, we use the ideal parameters to train and test the data with *DecisionTreeRegressor* and fit the data after.
+
+
+__Model Performance__:
+
+|Metric                                     |Train Performance      |Test Performance   |
+|-------------------------------------------|-----------------------|-------------------|
+|Mean Absolute Error (MAE)                  |134.4399831981876      |135.48074341738445 |
+|Root Mean Squared Error (RMSE)             |4416.8314061631945     |2828.3684084594393 |
+|Normalized Root Mean Squared Error (n-RMSE)|0.0042017041535038     |0.00982075774033743|
+
+As we have have lower train mean absolute error than the test mean absolute error, we can tell that the model fits well, but the results are suboptimal because there might not be enough features to explain the data, or the features that we provided are simply insufficient in fully predicting the minutes feature. However, it seems that our RMSE metric has the test set outperforming the training set. This might be due to RMSE penalizing larger errors more heavily. We also tried to fit the data with grid search and cross validation, and the gap distance between train data and test data did not get closed up. However, the gap between the train and test data are not too far off, and we can predict that there is no error for traing and testing regression. The possible reason for the slight gap between two might caused by our two features that we used for training and testing the regression are insufficient to explain the data and predict the minute.
+
 
 ---
 ## Final Model
