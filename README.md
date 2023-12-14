@@ -5,7 +5,7 @@
 Our exploratory data analysis on this dataset can be found [here](https://sek034.github.io/Impact-of-Number-of-Nutritions/).
 
 ## Framing the Problem
-#### <u>__Prediction Problem__: Predicting Minutes Taken for Different Recipes<u>
+#### <u>Prediction Problem: Predicting Minutes Taken for Different Recipes<u>
 
 **How we cleaned the data**: 
 
